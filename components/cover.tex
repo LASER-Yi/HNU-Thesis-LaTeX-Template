@@ -1,0 +1,52 @@
+
+\def\tablecontentwidth{7.5cm}
+\def\tablecontentheight{1em}
+
+\newcommand{\biaoti}{\fontsize{48pt}{\baselineskip}\selectfont}
+
+\def\makecover {
+    % \phantomsection
+    \begin{titlepage}
+
+        \begin{figure}[thb]
+            \centering
+            \includegraphics[width=7cm]{graphics/hnu_title}
+        \end{figure}
+        \vspace{-0.5cm}
+
+        \begin{figure}[hbt]
+            \centering
+            \includegraphics[width=11cm]{graphics/hnu_gray}
+        \end{figure}
+
+        \centering
+        \makebox[0pt][c]{
+            \raisebox{7.3cm}[0pt][0pt]{
+                \song\biaoti{毕业设计(论文)}
+            }
+        }
+
+        \begin{tabular}[hbt]{rc}
+            \xiaoerhao\textbf{设计论文题目：}&\xiaoerhao\underline{\makebox[\tablecontentwidth][l]{\covertitle}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao{学~生~姓~名：}&\sihao\song\underline{\makebox[\tablecontentwidth][c]{\covername}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao{学~生~学~号：}&\sihao\song\underline{\makebox[\tablecontentwidth][c]{\covernumber}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao{专~业~班~级：}&\sihao\song\underline{\makebox[\tablecontentwidth][c]{\coverclassname}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao{学~院~名~称：}&\sihao\song\underline{\makebox[\tablecontentwidth][c]{\covercollege}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao{指~导~老~师：}&\sihao\song\underline{\makebox[\tablecontentwidth][c]{\coverteacher}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao{学~院~院~长：}&\sihao\song\underline{\makebox[\tablecontentwidth][c]{\coverheadmaster}} \\
+       \end{tabular}
+
+       \begin{figure}[b]
+            \centering
+            \sihao\song{\makebox[\tablecontentwidth][c]{\coveryear}}
+       \end{figure}
+        \clearpage
+        \thispagestyle{empty}
+    \end{titlepage}
+}
