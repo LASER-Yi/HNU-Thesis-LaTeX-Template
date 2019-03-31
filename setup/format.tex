@@ -33,14 +33,17 @@
 \titleformat{\section}[block]{\sanhao}{\thesection}{0.5em}{}[]
 \titlespacing{\section}{0pt}{2.5em}{2.5em}
 \titleformat{\subsection}[block]{\xiaosihao}{\thesubsection}{0.5em}{}[]
-\titlespacing{\subsection}{0pt}{2.5em}{2.5em}
+\titlespacing{\subsection}{0pt}{2em}{2em}
 \titleformat{\subsubsection}[block]{\xiaosihao}{\thesubsubsection}{0.5em}{}[]
-\titlespacing{\subsubsection}{0pt}{2.5em}{2.5em}
+\titlespacing{\subsubsection}{0pt}{1.5em}{1.5em}
 
 % 页眉页脚控制
 
 \pagestyle{fancy}
-\lhead{}
+\fancyhf{}
+\lhead{
+    \includegraphics[width = 1cm]{graphics/hnu_black.png}
+}
 \chead{\sanhao\hei 湖南大学毕业设计（论文）}
 \rhead{\wuhao\song 第 \thepage 页}
 

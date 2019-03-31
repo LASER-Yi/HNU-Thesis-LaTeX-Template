@@ -1,11 +1,13 @@
 
+% TODO: 湖南大学标题文字错位
+%       文本太细
+
 \def\tablecontentwidth{7.5cm}
 \def\tablecontentheight{1em}
 
 \newcommand{\biaoti}{\fontsize{48pt}{\baselineskip}\selectfont}
 
 \def\makecover {
-    % \phantomsection
     \begin{titlepage}
 
         \begin{figure}[thb]
@@ -46,7 +48,7 @@
             \centering
             \sihao\song{\makebox[\tablecontentwidth][c]{\coveryear}}
        \end{figure}
-        \clearpage
+        \cleardoublepage
         \thispagestyle{empty}
     \end{titlepage}
 }
