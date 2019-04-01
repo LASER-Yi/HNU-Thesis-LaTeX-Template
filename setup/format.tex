@@ -41,11 +41,15 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{
-    \includegraphics[width = 1cm]{graphics/hnu_black.png}
-}
-\chead{\sanhao\hei 湖南大学毕业设计（论文）}
+
+\setlength{\headheight}{2cm}
+\lhead{\includegraphics[width = 1cm]{graphics/hnu_black.png}}
+\chead{\sanhao\hei 湖南大学毕业设计(论文)}
 \rhead{\wuhao\song 第 \thepage 页}
+
+% 目录控制
+\renewcommand{\contentsname}{目\qquad 录}
+\setcounter{tocdepth}{3}
 
 
 
