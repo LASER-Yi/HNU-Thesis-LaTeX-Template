@@ -5,7 +5,6 @@
 \input{setup/font}
 
 % 章节，段落字体控制
-
 \titleformat{\chapter}[block]{\sanhao}{\thechapter}{0.5em}{}[]
 \titlespacing{\chapter}{0pt}{2.5em}{2.5em}
 \titleformat{\section}[block]{\xiaosihao}{\thesection}{0.5em}{}[]
@@ -19,7 +18,6 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-
 \setlength{\headheight}{2cm}
 \lhead{\includegraphics[width = 1cm]{graphics/hnu_black.png}}
 \chead{\sanhao\hei 湖南大学毕业设计(论文)}
@@ -29,6 +27,9 @@
 \renewcommand{\contentsname}{目\qquad 录}
 \setcounter{tocdepth}{3}
 
-
+% 自定义模块样式
+\input{components/abstract.tex}
+\input{components/cover}
+\input{components/chapter}
 
 

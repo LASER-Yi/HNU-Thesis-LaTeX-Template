@@ -1,27 +1,28 @@
 % 如不使用左右交错排版，请在方括号中删除twoside
-\documentclass[UTF8, a4paper, openany, twoside]{ctexart}
+\documentclass[UTF8, a4paper, openany, twoside]{ctexbook}
 \input{setup/package}
 \input{setup/format}
 
 % 自定义模块引入
 \input{edit/info}
-\input{components/cover}
-\input{components/chapter}
 
 \begin{document}
-% 目录
+% 封面
 \makecover
 
-% 中文摘要
-% 英文摘要
-
-% TOC
 \thispagestyle{fancy}
+% 中文摘要
+\input{edit/cabstract.tex}
+% 英文摘要
+\input{edit/eabstract.tex}
+% TOC
 \tableofcontents
 
 \cleardoublepage
 
 \setcounter{page}{1}
+\setcounter{figure}{1}
+\setcounter{table}{1}
 
 \input{edit/chapters/intro.tex}
 \input{edit/chapters/conclusion.tex}
