@@ -174,7 +174,7 @@
 \hnu@def@fontsize{bahao}{5bp}
 
 \ctexset{
-    chapter/name    = {,},
+    chapter/name    = {},
     appendixname    = 附录,
     contentsname    = {目\hspace{\ccwd}录},
     listfigurename  = 插图索引,
@@ -210,47 +210,58 @@
 }
 \fancypagestyle{hnu@headings}{
     \fancyhead{}
+    \setlength{\headheight}{32pt}
+    \renewcommand{\headrulewidth}{1pt}
     \lhead{\includegraphics[width=1cm]{figures/hnu_black.png}}
     \chead{\sanhao\heiti 湖南大学毕业设计（论文）}
     \rhead{\wuhao\songti 第 \thepage 页}
 }
 
-% \RequirePackage{titlesec}
-% \titleformat{\chapter}[block]{\sanhao\heiti}{\thechapter}{0.5em}{}[]
-% \titlespacing{\chapter}{0pt}{2.5em}{2.5em}
-% \titleformat{\section}[block]{\xiaosi\heiti}{\thesection}{0.5em}{}[]
-% \titlespacing{\section}{0pt}{2em}{2em}
-% \titleformat{\subsection}[block]{\xiaosi\heiti}{\thesubsection}{0.5em}{}[]
-% \titlespacing{\subsection}{0pt}{1.5em}{1.5em}
-% \titleformat{\subsubsection}[block]{\xiaosi\heiti}{\thesubsubsection}{0.5em}{}[]
-% \titlespacing{\subsubsection}{0pt}{1.5em}{1.5em}
+\renewcommand\frontmatter{
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \@mainmatterfalse
+  \pagestyle{hnu@empty}
+}
+\renewcommand\mainmatter{
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \@mainmattertrue
+  \pagestyle{hnu@headings}
+  \setcounter{page}{1}
+\setcounter{figure}{1}
+\setcounter{table}{1}
+}
+
+\renewcommand\backmatter{
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \@mainmattertrue
+}
 
 \ctexset{
     chapter={
         afterindent=true,
         pagestyle={hnu@headings},
-        beforeskip={2.5em},
+        beforeskip={1em},
         aftername=\hskip\ccwd,
-        afterskip={2.5em},
-        format={\sanhao\heiti},
+        afterskip={1em},
+        format={\sffamily\sanhao\heiti},
     },
     section={
         afterindent=true,
-        beforeskip={2.0em},
-        afterskip={2.0em},
+        beforeskip={1em},
+        afterskip={1em},
         format={\xiaosi\heiti},
     },
     subsection={
         afterindent=true,
-        beforeskip={1.5em},
-        afterskip={1.5em},
-        format={\sanhao\heiti},
+        beforeskip={1em},
+        afterskip={1em},
+        format={\xiaosi\heiti},
     },
     subsubsection={
         afterindent=true,
-        beforeskip={1.5em},
-        afterskip={1.5em},
-        format={\sanhao\heiti},
+        beforeskip={1em},
+        afterskip={1em},
+        format={\xiaosi\heiti},
     },
     paragraph={
         afterindent=true,
@@ -261,7 +272,118 @@
 }
 
 \setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
 
 \newcommand{\cabstractname}{摘\hspace{\ccwd}要}
-\newcommand{\eabstract}{Abstract}
-\newenvironment{abstract}{}{}
+\newcommand{\eabstractname}{Abstract}
+\let\CJK@todaysave=\today
+\def\CJK@todaysmall@short{\the\year 年 \the\month 月}
+\def\CJK@todaysmall{\the\year 年 \the\month 月 \the\day 日}
+\def\CJK@todaybig@short{\zhdigits{\the\year}年\zhnumber{\the\month}月}
+\def\CJK@todaybig{\zhdigits{\the\year}年\zhnumber{\the\month}月\zhnumber{\the\day}日}
+\def\CJK@today{\CJK@todaysmall}
+\renewcommand\today{\CJK@today}
+\newcommand\CJKtoday[1][1]{%
+\ifcase#1\def\CJK@today{\CJK@todaysave}
+  \or\def\CJK@today{\CJK@todaysmall}
+  \or\def\CJK@today{\CJK@todaybig}
+\fi}
+
+\def\hnusetup{\kvsetkeys{hnu}}
+
+\def\hnu@parse@keywords#1{
+  \define@key{hnu}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname hnu@#1\endcsname{}
+  \expandafter\gdef\csname #1\endcsname##1{
+    \@for\reserved@a:=##1\do{
+      \expandafter\ifx\csname hnu@#1\endcsname\@empty\else
+        \expandafter\g@addto@macro\csname hnu@#1\endcsname{%
+          \ignorespaces\csname hnu@#1@separator\endcsname}
+      \fi
+      \expandafter\expandafter\expandafter\g@addto@macro%
+        \expandafter\csname hnu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
+\hnu@parse@keywords{ckeywords}
+\hnu@parse@keywords{ekeywords}
+
+\def\hnu@def@term#1{%
+  \define@key{hnu}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname #1\endcsname##1{%
+    \expandafter\gdef\csname hnu@#1\endcsname{##1}}
+  \csname #1\endcsname{}}
+\hnu@def@term{ctitle}
+\hnu@def@term{etitle}
+\hnu@def@term{cauthor}
+\hnu@def@term{cnumber}
+\hnu@def@term{cdepartment}
+\hnu@def@term{cclassname}
+\hnu@def@term{csupervisor}
+\hnu@def@term{cheadmaster}
+\hnu@def@term{cdate}
+
+\AtBeginDocument{
+  \pagestyle{hnu@empty}
+    
+}
+
+\def\makecover{
+  \begin{titlepage}
+        \begin{figure}[thb]
+            \centering
+            \includegraphics[width=7cm]{figures/hnu_title}
+        \end{figure}
+        \vspace{-0.5cm}
+
+        \begin{figure}[hbt]
+            \centering
+            \includegraphics[width=11cm]{figures/hnu_gray}
+        \end{figure}
+
+        \newcommand{\biaoti}{\fontsize{48pt}{\baselineskip}\selectfont}
+
+        \centering
+        \makebox[0pt][c]{
+            \raisebox{7.3cm}[0pt][0pt]{
+                \songti\biaoti{毕业设计(论文)}
+            }
+        }
+
+        \begin{tabular}[hbt]{rc}
+            \xiaoer\heiti\textbf{设计论文题目：}&\sihao\underline{\makebox[\tablecontentwidth][l]{\hnu@ctitle}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            &\sihao\underline{\makebox[\tablecontentwidth][l]{\coversectitle}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao\heiti{学~生~姓~名：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cauthor}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao\heiti{学~生~学~号：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cnumber}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao\heiti{专~业~班~级：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cclassname}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao\heiti{学~院~名~称：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cdepartment}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao\heiti{指~导~老~师：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@csupervisor}} \\
+            \specialrule{0em}{\tablecontentheight}{0pt}
+            \sihao\heiti{学~院~院~长：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cheadmaster}} \\
+       \end{tabular}
+
+       \begin{figure}[b]
+            \centering
+            \sihao\song{\makebox[\tablecontentwidth][c]{\hnu@cdate}}
+       \end{figure}
+        \cleardoublepage
+    \end{titlepage}
+}
+
+\renewcommand{\tableofcontents}{
+  \clearpage
+  \begin{center}
+    \sanhao\heiti{\contentsname}
+  \end{center} 
+  \wuhao\@starttoc{toc}\normalsize
+}
+
+\newenvironment{cabstract}{
+  \begin{center}
+    \heiti\xiaosan\
+  \end{center}
+}{}
+\newenvironment{eabstract}{}{}

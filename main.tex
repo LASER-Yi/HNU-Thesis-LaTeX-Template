@@ -1,26 +1,24 @@
 \documentclass[]{hnuthesis}
-% 自定义模块引入
-% \input{edit/info}
+
+\graphicspath{{figures/}}
 
 \begin{document}
-% 封面
-% \makecover
+\input{data/info.tex}
 
-\thispagestyle{fancy}
-% 中文摘要
-\input{data/cabstract.tex}
-% 英文摘要
-\input{data/eabstract.tex}
+\frontmatter
+% 封面
+\makecover
+
+% 摘要
+\input{data/abstract.tex}
 % TOC
 \tableofcontents
 
-\cleardoublepage
-
-\setcounter{page}{1}
-\setcounter{figure}{1}
-\setcounter{table}{1}
+\mainmatter
 
 \input{data/chapters/intro.tex}
 \input{data/chapters/conclusion.tex}
+
+\backmatter
 
 \end{document}
