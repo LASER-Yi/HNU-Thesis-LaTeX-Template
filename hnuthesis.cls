@@ -322,7 +322,6 @@
 
 \AtBeginDocument{
   \pagestyle{hnu@empty}
-    
 }
 
 \renewcommand{\tableofcontents}{
