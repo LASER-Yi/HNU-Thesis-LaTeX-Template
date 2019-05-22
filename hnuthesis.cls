@@ -325,54 +325,6 @@
     
 }
 
-\def\makecover{
-  \begin{titlepage}
-        \begin{figure}[thb]
-            \centering
-            \includegraphics[width=7cm]{figures/hnu_title}
-        \end{figure}
-        \vspace{-0.5cm}
-
-        \begin{figure}[hbt]
-            \centering
-            \includegraphics[width=11cm]{figures/hnu_gray}
-        \end{figure}
-
-        \newcommand{\biaoti}{\fontsize{48pt}{\baselineskip}\selectfont}
-
-        \centering
-        \makebox[0pt][c]{
-            \raisebox{7.3cm}[0pt][0pt]{
-                \songti\biaoti{毕业设计(论文)}
-            }
-        }
-
-        \begin{tabular}[hbt]{rc}
-            \xiaoer\heiti\textbf{设计论文题目：}&\sihao\underline{\makebox[\tablecontentwidth][l]{\hnu@ctitle}} \\
-            \specialrule{0em}{\tablecontentheight}{0pt}
-            &\sihao\underline{\makebox[\tablecontentwidth][l]{\coversectitle}} \\
-            \specialrule{0em}{\tablecontentheight}{0pt}
-            \sihao\heiti{学~生~姓~名：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cauthor}} \\
-            \specialrule{0em}{\tablecontentheight}{0pt}
-            \sihao\heiti{学~生~学~号：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cnumber}} \\
-            \specialrule{0em}{\tablecontentheight}{0pt}
-            \sihao\heiti{专~业~班~级：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cclassname}} \\
-            \specialrule{0em}{\tablecontentheight}{0pt}
-            \sihao\heiti{学~院~名~称：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cdepartment}} \\
-            \specialrule{0em}{\tablecontentheight}{0pt}
-            \sihao\heiti{指~导~老~师：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@csupervisor}} \\
-            \specialrule{0em}{\tablecontentheight}{0pt}
-            \sihao\heiti{学~院~院~长：}&\sihao\songti\underline{\makebox[\tablecontentwidth][l]{\hnu@cheadmaster}} \\
-       \end{tabular}
-
-       \begin{figure}[b]
-            \centering
-            \sihao\song{\makebox[\tablecontentwidth][c]{\hnu@cdate}}
-       \end{figure}
-        \cleardoublepage
-    \end{titlepage}
-}
-
 \renewcommand{\tableofcontents}{
   \clearpage
   \begin{center}
